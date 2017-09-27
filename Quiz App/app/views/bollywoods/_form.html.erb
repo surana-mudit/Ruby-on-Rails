@@ -1,0 +1,52 @@
+<%= form_with(model: bollywood, local: true) do |form| %>
+  <% if bollywood.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bollywood.errors.count, "error") %> prohibited this bollywood from being saved:</h2>
+
+      <ul>
+      <% bollywood.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ques_type %>
+    <%= form.text_field :ques_type, id: :bollywood_ques_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :question %>
+    <%= form.text_area :question, id: :bollywood_question %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option1 %>
+    <%= form.text_field :option1, id: :bollywood_option1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option2 %>
+    <%= form.text_field :option2, id: :bollywood_option2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option3 %>
+    <%= form.text_field :option3, id: :bollywood_option3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option4 %>
+    <%= form.text_field :option4, id: :bollywood_option4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :answer %>
+    <%= form.text_field :answer, id: :bollywood_answer %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

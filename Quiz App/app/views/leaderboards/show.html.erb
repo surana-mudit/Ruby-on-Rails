@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User email:</strong>
+  <%= @leaderboard.user_email %>
+</p>
+
+<p>
+  <strong>Quiz:</strong>
+  <%= @leaderboard.quiz_id %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @leaderboard.score %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @leaderboard.state %>
+</p>
+
+<%= link_to 'Edit', edit_leaderboard_path(@leaderboard) %> |
+<%= link_to 'Back', leaderboards_path %>

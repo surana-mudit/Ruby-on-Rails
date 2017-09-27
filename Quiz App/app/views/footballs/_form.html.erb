@@ -1,0 +1,52 @@
+<%= form_with(model: football, local: true) do |form| %>
+  <% if football.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(football.errors.count, "error") %> prohibited this football from being saved:</h2>
+
+      <ul>
+      <% football.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ques_type %>
+    <%= form.text_field :ques_type, id: :football_ques_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :question %>
+    <%= form.text_area :question, id: :football_question %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option1 %>
+    <%= form.text_field :option1, id: :football_option1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option2 %>
+    <%= form.text_field :option2, id: :football_option2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option3 %>
+    <%= form.text_field :option3, id: :football_option3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option4 %>
+    <%= form.text_field :option4, id: :football_option4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :answer %>
+    <%= form.text_field :answer, id: :football_answer %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

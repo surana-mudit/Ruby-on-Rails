@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<h1 align="center">Football-Quiz</h1>
+<br/><br/>
+
+<% if @rec1.state >= 1 && @rec1.state < Football.count()  %>
+  <p align="center"><%= link_to "Continue Quiz", "/footballs/"+(@rec1.state+1).to_s, class: "btn btn-success" %><br/><br/></p>
+  <p align="center"><%= link_to "Start Over", footballs_1_path, data: { confirm: "Your previous score will not be considered if you start again. Do you wish to continue?" }, class: "btn btn-info" %></p><br/><br/>
+<% elsif @rec1.state >= Football.count() %>
+  <p align="center"><%= link_to "Start Quiz", footballs_1_path, data: { confirm: "Your score will be updated to 0, if you play again. Do you wish to continue? (Rankings will also be affected)" }, class: "btn btn-success" %></p><br/><br/>
+<% else %>
+  <p align="center"><%= link_to "Start Quiz", footballs_1_path, class: "btn btn-success" %></p><br/><br/>
+<% end %>
+
+<table class="table table-hover">
+  <tr>
+    <th style="text-align: center;">USER EMAIL</th>
+    <th style="text-align: left;">SCORE</th>
+  </tr>
+  <% @players1.each do |player1| %>
+  <tr>
+    <td style="text-align: center;"><%= player1.user_email %></td>
+    <td style="text-align: left;"><%= player1.score %></td>
+  </tr>
+  <% end %>
+</table>
+
+<p align="center"><%= link_to "Back", quiz_index_path, class: "btn btn-info" %></p>

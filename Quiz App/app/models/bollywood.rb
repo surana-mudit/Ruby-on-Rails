@@ -1,0 +1,2 @@
+class Bollywood < ApplicationRecord
+end

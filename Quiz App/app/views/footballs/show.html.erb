@@ -1,0 +1,106 @@
+<p id="notice"><%= notice %></p>
+
+<h1 align="center"><u>Football-Quiz</u></h1><br/>
+<b>Ques Type : <%= @football.ques_type %></b><br/><br/>
+
+Question : <%= @football.question %> 
+<br/>
+  <% if @football.ques_type.include? "Single" %>
+    <%= form_tag("/footballs/"+@football.id.to_s, method: "get") do %>
+      <table>
+        <tr>
+        <td><%= radio_button_tag(:option, "a") %></td>
+        <td><%= label_tag(:a, "A. "+@football.option1) %></td>
+        </tr>
+        <tr>
+        <td><%= radio_button_tag(:option, "b") %></td>
+        <td><%= label_tag(:b, "B. "+@football.option2) %></td>
+        </tr>
+        <tr>
+        <td><%= radio_button_tag(:option, "c") %></td>
+        <td><%= label_tag(:c, "C. "+@football.option3) %></td>
+        </tr>
+        <tr>
+        <td><%= radio_button_tag(:option, "d") %></td>
+        <td><%= label_tag(:d, "D. "+@football.option4) %></td>
+        </tr>
+      </table>
+      <%= submit_tag "Lock Answer", id: "lock" %><br/>
+      <h3>SCORE: <%= @rec1.score %></h3>
+    <% end %><br/><br/>
+    <% if @football.answer == params[:option] %>
+      <h1><font color="green">CORRECT ANSWER</font></h1>
+      <% if @football.id < Football.count() %>
+        <h2><%= link_to "Next Question", (@football.id+1).to_s %></h2>
+      <% else %>
+        <h2><%= link_to "Finish Quiz", "/footballs" %></h2>
+      <% end %>
+      <script type="text/javascript">
+        g = document.getElementById("lock")
+        g.onclick = function(){
+            g.disabled = true}
+      </script>
+    <% elsif params[:option].present? && @football.answer != params[:option] %>
+      <h1><font color="red">WRONG ANSWER</font></h1>
+      <% if @football.id < Football.count() %>
+        <h2><%= link_to "Next Question", (@football.id+1).to_s %></h2>
+      <% else %>
+        <h2><%= link_to "Finish Quiz", "/footballs" %></h2>
+      <% end %>
+      <script type="text/javascript">
+        g = document.getElementById("lock")
+        g.onclick = function(){
+            g.disabled = true}
+      </script>
+    <% end %>
+  
+  <% elsif @football.ques_type.include? "Multi" %>
+    <%= form_tag("/footballs/"+@football.id.to_s, method: "get") do %>
+      <table>
+        <tr>
+        <td><%= check_box_tag(:option1, "a") %></td>
+        <td><%= label_tag(:a, "A. "+@football.option1) %></td>
+        </tr>
+        <tr>
+        <td><%= check_box_tag(:option2, "b") %></td>
+        <td><%= label_tag(:b, "B. "+@football.option2) %></td>
+        </tr>
+        <tr>
+        <td><%= check_box_tag(:option3, "c") %></td>
+        <td><%= label_tag(:c, "C. "+@football.option3) %></td>
+        </tr>
+        <tr>
+        <td><%= check_box_tag(:option4, "d") %></td>
+        <td><%= label_tag(:d, "D. "+@football.option4) %></td>
+        </tr>
+      </table>
+      <%= submit_tag "Lock Answer", id: "lock1" %>
+      <h3>SCORE: <%= @rec1.score %></h3>
+    <% end %><br/><br/>
+    <% if @football.answer == (params[:option1].to_s+params[:option2].to_s+params[:option3].to_s+params[:option4].to_s) %>
+      <h1><font color="green">CORRECT ANSWER</font></h1>
+      <% if @football.id < Football.count() %>
+        <h2><%= link_to "Next Question", (@football.id+1).to_s %></h2>
+      <% else %>
+        <h2><%= link_to "Finish Quiz", "/footballs" %></h2>
+      <% end %>
+      <script type="text/javascript">
+        g = document.getElementById("lock1")
+        g.onclick = function(){
+            g.disabled = true}
+      </script>
+    <% elsif (params[:option1].present? || params[:option2].present? || params[:option3].present? || params[:option4].present?) && (@football.answer != (params[:option1].to_s+params[:option2].to_s+params[:option3].to_s+params[:option4].to_s)) %>
+      <h1><font color="red">WRONG ANSWER</font></h1>
+      <% if @football.id < Football.count() %>
+        <h2><%= link_to "Next Question", (@football.id+1).to_s %></h2>
+      <% else %>
+        <h2><%= link_to "Finish Quiz", "/footballs" %></h2>
+      <% end %>
+      <script type="text/javascript">
+        g = document.getElementById("lock1")
+        g.onclick = function(){
+            g.disabled = true}
+      </script>
+    <% end %>
+  <% end %>
+

@@ -1,0 +1,2 @@
+class Hollywood < ApplicationRecord
+end

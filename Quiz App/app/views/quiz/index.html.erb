@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GAME</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h3>Choose from the following categories:</h3><br/>
+<h3>SPORTS:</h3>
+<ul class="list-group">
+	<li class="list-group-item list-group-item-success">
+		<%= link_to "CRICKET", crickets_path %>
+		<% if @rec.state >= 1 %>
+			<font color="green"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ATTEMPTED</b></font>	   
+		<% else %>
+			<font color="red"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOT-ATTEMPTED</b></font>
+		<% end %>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @rec.score %>
+	</li>
+	<li class="list-group-item list-group-item-info">
+		<%= link_to "FOOTBALL", footballs_path %>
+		<% if @rec1.state >= 1 %>
+			<font color="green"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ATTEMPTED</b></font>	   
+		<% else %>
+			<font color="red"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOT-ATTEMPTED</b></font>
+		<% end %>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @rec1.score %>
+	</li>
+</ul><br/>
+<h3>MOVIES:</h3>
+<ul class="list-group">
+	<li class="list-group-item list-group-item-warning">
+		<%= link_to "BOLLYWOOD", bollywoods_path %>
+		<% if @rec2.state >= 1 %>
+			<font color="green"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ATTEMPTED</b></font>	   
+		<% else %>
+			<font color="red"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOT-ATTEMPTED</b></font>
+		<% end %>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @rec2.score %>
+	</li>
+	<li class="list-group-item list-group-item-danger">	
+		<%= link_to "HOLLYWOOD", hollywoods_path %>
+		<% if @rec3.state >= 1 %>
+			<font color="green"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ATTEMPTED</b></font>	   
+		<% else %>
+			<font color="red"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOT-ATTEMPTED</b></font>
+		<% end %>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @rec3.score %>
+	</li>
+</ul>
+
+<p align="center"><%= link_to "Back", root_path, class: "btn btn-info" %></p>
+</body>
+</html>

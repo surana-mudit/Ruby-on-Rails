@@ -1,0 +1,52 @@
+<%= form_with(model: cricket, local: true) do |form| %>
+  <% if cricket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cricket.errors.count, "error") %> prohibited this cricket from being saved:</h2>
+
+      <ul>
+      <% cricket.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ques_type %>
+    <%= form.text_field :ques_type, id: :cricket_ques_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :question %>
+    <%= form.text_area :question, id: :cricket_question %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option1 %>
+    <%= form.text_field :option1, id: :cricket_option1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option2 %>
+    <%= form.text_field :option2, id: :cricket_option2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option3 %>
+    <%= form.text_field :option3, id: :cricket_option3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option4 %>
+    <%= form.text_field :option4, id: :cricket_option4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :answer %>
+    <%= form.text_field :answer, id: :cricket_answer %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
